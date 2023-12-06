@@ -26,10 +26,18 @@ def get_seating_matrix():
     return seating_matrix
 
 
-def update_restxt():
+def update_restxt(first_name, row, column):
     with open('reservations.txt', 'a+') as file:
-        file.write("Garrett, 0, 3, TIrNuFmOaTnC3420\n")
-        file.write("Peter, 0, 0, TIrNuFmOaTnC3421\n")
+        tickcode = "INFOTC4320"
+        e_ticket = ""
+        i = 0
+        while (i < len(first_name)) or (i < len(tickcode)):
+            if(i < len(first_name)):
+                e_ticket += first_name[i]
+            if(i < len(tickcode)):
+                e_ticket += tickcode[i]
+            i= i+1
+        file.write(f"{first_name}, {row-1}, {column-1}, {e_ticket}\n")
         file.close
 
 
