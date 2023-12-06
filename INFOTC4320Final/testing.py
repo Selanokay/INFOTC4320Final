@@ -60,8 +60,9 @@ def load_initial_reservations():
                 'e_ticket': e_ticket
             })
 
-update_restxt()
+
 load_admin_credentials()
 load_initial_reservations()
+update_restxt("test", 1, 1)
 get_seating_matrix()
 get_cost_matrix()
