@@ -23,6 +23,30 @@
     </nav>
     <hr>
 
-    <p class="title">Admin</p>
+    <p class="title">Administrator Login</p>
+    <hr>
+    <label for="userUsername">Username:</label>
+    <input type="text" id="userUsername" placeholder="Username">
+
+    <p></p>
+
+    <label for="userPassword">Password:</label>
+    <input type="text" id="userPassword" placeholder="Password">
+
+    <!-- Button to save information -->
+    <button onclick="saveAdminLogin()">Submit</button>
+
+    <!-- Display saved information -->
+    <div id="displayInfo"></div>
+
+    <script>
+        function saveAdminLogin() {
+            var userUsername = document.getElementById("userUsername").value;
+            var userPassword = document.getElementById("userPassword").value;
+
+            // Display the saved information
+            document.getElementById("displayInfo").innerHTML = "<p>Saved Information: " + userUsername + " " + userPassword + "</p>";
+        }
+    </script>
 </body>
 </html>
