@@ -15,6 +15,15 @@
             font-size: 2em;
             margin-left: 300px;
         }
+        .title2 {
+            font-size: 1.5em;
+            font-weight: bold;
+
+        }
+        .title3 {
+            font-size: 1em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -22,6 +31,58 @@
         <p><a href="/">Main Page</a><a href="/Admin">Admin</a><a href="/Reservation">Reservations</a></p>
     </nav>
     <hr>
-    <p class="title">Reservation</p>
+    <p class="title">Reserve Your Seat</p>
+    <hr>
+    <p class="title2">Seating Chart</p>
+    <p></p>
+    <p class="title3">X = Reserved Seat : O = Available Seat</p>
+    <p></p>
+    <p></p>
+    <label for="firstname"><p>First name</p></label>
+    <input type="text" id="firstname" placeholder="First Name">
+    <p></p>
+    <label for="lastname"><p>Last name</p></label>
+    <input type="text" id="lastname" placeholder="Last Name">
+    <p></p>
+    <label for="rowSelection"><p>Choose a Row:</p></label>
+    <select id="rowSelection">
+        <option value="1">Row 1</option>
+        <option value="2">Row 2</option>
+        <option value="3">Row 3</option>
+        <option value="4">Row 4</option>
+        <option value="5">Row 5</option>
+        <option value="6">Row 6</option>
+        <option value="7">Row 7</option>
+        <option value="8">Row 8</option>
+        <option value="9">Row 9</option>
+        <option value="10">Row 10</option>
+        <option value="11">Row 11</option>
+        <option value="12">Row 12</option>
+    </select>
+    <p></p>
+    <label for="seatSelection"><p>Choose a Seat:</p></label>
+    <select id="seatSelection">
+        <option value="1">Seat 1</option>
+        <option value="2">Seat 2</option>
+        <option value="3">Seat 3</option>
+        <option value="4">Seat 4</option>
+    </select> 
+    <p></p>  
+    <button onclick="reservationComplete()">Submit</button>
+
+    <div id="displayInfo"></div>
+
+    <script>
+        function reservationComplete() {
+            var firstname = document.getElementById("firstname").value;
+            var lastname = document.getElementById("lastname").value;
+            var rowSelection = document.getElementById("rowSelection").value;
+            var seatSelection = document.getElementById("seatSelection").value;
+
+            // Display the saved information
+            document.getElementById("displayInfo").innerHTML = "<p>First Name: " + firstname + " " + "<p>Last Name: " + lastname + " " + "<p>Row Selected: " + rowSelection + " " + "<p>Seat Selected: " + seatSelection + " ";
+        }
+    </script>
+
 </body>
 </html>
