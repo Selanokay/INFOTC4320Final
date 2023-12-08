@@ -54,7 +54,7 @@ def get_cost_matrix():
         cost_pos_two = line['column']
         cost_for_reservation = cost_matrix[cost_pos_one][cost_pos_two]
         total_cost += cost_for_reservation
-        line['cost'] = cost_for_reservation  # Add 'cost' to the reservation
+        line['cost'] = cost_for_reservation  
     return cost_matrix
 
 
@@ -142,7 +142,9 @@ def main():
 
 @app.route('/Reservation')
 def contact():
-    return render_template('Reservation.html')
+    cost_matrix = get_cost_matrix()
+    seating_matrix = get_seating_matrix()
+    return render_template('Reservation.html', cost_matrix=cost_matrix, seating_matrix=seating_matrix)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
