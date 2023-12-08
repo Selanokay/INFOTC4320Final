@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Information</title>
+    <style>
+        /* Add any additional styling you need */
+        .seat {
+            display: inline-block;
+            width: 30px; /* Adjust width as needed */
+            height: 30px; /* Adjust height as needed */
+            margin: 5px; /* Adjust margin as needed */
+            text-align: center;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Information</h1>
+    
+    <!-- Display Seating Chart Vertically -->
+    {% for row in seating_matrix %}
+        <div>
+            <p>Row {{ loop.index }}</p>
+            {% for seat in row %}
+                <div class="seat">{{ seat }}</div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <hr>
+
+    <p>Total Sales: ${{ total_sales }}</p>
+
+    <!-- Add a link to the main page -->
+    <a href="{{ url_for('main') }}">Return to Main Page</a>
+</body>
+</html>
