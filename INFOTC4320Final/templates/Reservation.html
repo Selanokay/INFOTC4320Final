@@ -23,6 +23,14 @@
             font-size: 1em;
             font-weight: bold;
         }
+        .seat {
+            display: inline-block;
+            width: 30px; 
+            height: 30px; 
+            margin: 5px; 
+            text-align: center;
+            border: 1px solid #000;
+        }
     </style>
 </head>
 <body>
@@ -32,6 +40,16 @@
     <hr>
     <p class="title">Reserve Your Seat</p>
     <hr>
+    {% for row in seating_matrix %}
+        <div>
+            <p>Row {{ loop.index }}</p>
+            {% for seat in row %}
+                <div class="seat">{{ seat }}</div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <hr>
+
     <p class="title2">Seating Chart</p>
     <p></p>
     <p class="title3">X = Reserved Seat : O = Available Seat</p>
@@ -75,18 +93,16 @@
         function reservationComplete() {
             var firstname = document.getElementById("firstname").value;
             var lastname = document.getElementById("lastname").value;
-            var rowSelection = document.getElementById("rowSelection").value;
-            var seatSelection = document.getElementById("seatSelection").value;
+            var rowSelection = document.getElementById("rowSelection").value - 1;
+            var seatSelection = document.getElementById("seatSelection").value - 1;
+            
 
-            // Display the saved information
-            document.getElementById("displayInfo").innerHTML = "<p>First Name: " + firstname + " " + "<p>Last Name: " + lastname + " " + "<p>Row Selected: " + rowSelection + " " + "<p>Seat Selected: " + seatSelection + " ";
-
-            // AJAX request to save reservation information
+            document.getElementById("displayInfo").innerHTML = "<p>First Name: " + firstname + " " + "<p>Last Name: " + lastname + " " + "<p>Row Selected: " + (rowSelection + 1) + " " + "<p>Seat Selected: " + (seatSelection + 1) + " ";
+            
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/save_reservation", true);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             
-            // Send data to the server
             xhr.send(JSON.stringify({
                 first_name: firstname,
                 last_name: lastname,
