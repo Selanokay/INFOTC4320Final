@@ -25,28 +25,31 @@
 
     <p class="title">Administrator Login</p>
     <hr>
-    <label for="userUsername">Username:</label>
-    <input type="text" id="userUsername" placeholder="Username">
 
-    <p></p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
-    <label for="userPassword">Password:</label>
-    <input type="text" id="userPassword" placeholder="Password">
+    <form method="post" action="/Admin">
+        <label for="userUsername">Username:</label>
+        <input type="text" id="userUsername" name="username" placeholder="Username">
 
-    <!-- Button to save information -->
-    <button onclick="saveAdminLogin()">Submit</button>
+        <p></p>
+
+        <label for="userPassword">Password:</label>
+        <input type="password" id="userPassword" name="password" placeholder="Password">
+
+        <!-- Button to submit the form -->
+        <button type="submit">Submit</button>
+    </form>
 
     <!-- Display saved information -->
     <div id="displayInfo"></div>
-
-    <script>
-        function saveAdminLogin() {
-            var userUsername = document.getElementById("userUsername").value;
-            var userPassword = document.getElementById("userPassword").value;
-
-            // Display the saved information
-            document.getElementById("displayInfo").innerHTML = "<p>Saved Information: " + userUsername + " " + userPassword + "</p>";
-        }
-    </script>
 </body>
 </html>
